@@ -17,12 +17,13 @@ function App() {
   function createTodo() {
     client.models.Todo.create({ content: window.prompt("Todo content") });
   }
-  const { signOut } = useAuthenticator();
+  const { user, signOut } = useAuthenticator();
 
   return (
     <main>
       <button onClick={signOut}>Sign out</button>
-      <h1>My todos</h1>
+      <h1>{user?.signInDetails?.loginId}'s todos</h1>
+      {/* <h1>My todos</h1> */}
       <button onClick={createTodo}>+ new</button>
       <ul>
         {todos.map((todo) => (
