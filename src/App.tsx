@@ -12,6 +12,14 @@ function App() {
     client.models.Todo.observeQuery().subscribe({
       next: (data) => setTodos([...data.items]),
     });
+
+    client.queries
+      .sayHello({
+        name: "Amplddify",
+      })
+      .then((response) => {
+        console.log(response);
+      });
   }, []);
 
   function createTodo() {
